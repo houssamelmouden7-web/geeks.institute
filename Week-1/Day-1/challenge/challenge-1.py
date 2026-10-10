@@ -1,5 +1,5 @@
 number = int(input("Enter a number: "))
-length = int(input("Enter length: "))
+length = int(input("Enter a length: "))
 
 multiples = []
 
