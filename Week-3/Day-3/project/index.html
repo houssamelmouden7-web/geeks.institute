@@ -8,41 +8,87 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- ==================== HEADER (Logo + Nav Categories + Search + Theme) ==================== -->
   <header class="app-header">
-    <div class="header-brand">
-      <span class="brand-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clapperboard preview-icon"><path d="m12.296 3.464 3.02 3.956"/><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m6.18 5.276 3.1 3.899"/></svg></span>
-      <h1 class="brand-title">F<span>raja</span></h1>
+    <div class="header-left">
+      <!-- Clickable Logo to return Home / Top -->
+      <a href="#hero-section" class="header-brand" id="brand-home-btn" title="Back to Home">
+        <span class="brand-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clapperboard"><path d="m12.296 3.464 3.02 3.956"/><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m6.18 5.276 3.1 3.899"/></svg>
+        </span>
+        <h1 class="brand-title">F<span>raja</span></h1>
+      </a>
+
+      <!-- Category Filter Pills Moved to Top Next to Logo -->
+      <nav class="category-filters-nav" aria-label="Catalog Categories">
+        <button class="filter-btn active" data-category="All">All</button>
+        <button class="filter-btn" data-category="Anime">Anime</button>
+        <button class="filter-btn" data-category="Series">Series</button>
+        <button class="filter-btn" data-category="Movies">Movies</button>
+        <button class="filter-btn fav-filter-btn" data-category="Favorites">
+          <span class="btn-heart-icon"></span> Favorites (<span id="fav-counter">0</span>)
+        </button>
+      </nav>
     </div>
 
-    <div class="search-box">
-      <label for="search-input" class="visually-hidden">Search catalog</label>
-      <input 
-        type="search" 
-        id="search-input" 
-        placeholder="Search anime, series, or movies..."
-        autocomplete="off"
-      >
-      <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search preview-icon"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></span>
+    <div class="header-right">
+      <div class="search-box">
+        <label for="search-input" class="visually-hidden">Search catalog</label>
+        <input 
+          type="search" 
+          id="search-input" 
+          placeholder="Search anime, series, or movies..."
+          autocomplete="off"
+        >
+        <span class="search-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </span>
+      </div>
+
+      <button id="theme-toggle-btn" class="theme-btn" title="Toggle Theme" aria-label="Toggle Theme"></button>
     </div>
   </header>
 
-  <section class="controls" aria-label="Filters and Sorting">
-    <div class="category-filters" role="group" aria-label="Filter by category">
-      <button class="filter-btn active" data-category="All">All</button>
-      <button class="filter-btn" data-category="Anime">Anime</button>
-      <button class="filter-btn" data-category="Series">Series</button>
-      <button class="filter-btn" data-category="Movies">Movies</button>
-      <button class="filter-btn fav-filter-btn" data-category="Favorites"> Favorites (<span id="fav-counter">0</span>)</button>
+  <!-- ==================== HERO SECTION (IMDb Slider + Up Next) ==================== -->
+  <section class="hero-section" id="hero-section">
+    <div class="hero-main-slider">
+      <div class="slider-slide" id="slider-slide">
+        <img id="slider-img" src="" alt="Featured Showcase" class="slider-bg-img">
+        <div class="slider-overlay"></div>
+        <div class="slider-content">
+          <div class="slider-badges">
+            <span class="badge badge-category" id="slider-category">Anime</span>
+            <span class="badge badge-rating" id="slider-rating">⭐ 9.0/10</span>
+          </div>
+          <h2 class="slider-title" id="slider-title">Title Here</h2>
+          <p class="slider-desc" id="slider-desc">Short description of the title...</p>
+          <button class="slider-btn" id="slider-view-btn">▶ Watch Details</button>
+        </div>
+      </div>
+      <button class="slider-nav-btn prev" id="slider-prev" aria-label="Previous Slide">&#10094;</button>
+      <button class="slider-nav-btn next" id="slider-next" aria-label="Next Slide">&#10095;</button>
+      <div class="slider-dots" id="slider-dots"></div>
+    </div>
+
+    <!-- Up Next Panel -->
+    <aside class="hero-up-next">
+      <h3 class="up-next-title">Up next <span>Recommendations</span></h3>
+      <div class="up-next-list" id="up-next-list"></div>
+    </aside>
+  </section>
+
+  <!-- ==================== SUB-BAR (Sorting & Counter) ==================== -->
+  <section class="sub-controls" aria-label="Sorting and Status">
+    <div class="catalog-status">
+      <span class="catalog-live-dot"></span>
+      <span id="catalog-count-label">Showing all titles</span>
     </div>
 
     <div class="sort-control">
-      <button id="theme-toggle-btn" class="theme-btn" title="Toggle Theme" aria-label="Toggle Dark and Light Mode">🌙</button>
-
       <label for="sort-select">Sort by:</label>
       <select id="sort-select">
         <option value="default">Default</option>
@@ -53,16 +99,99 @@
     </div>
   </section>
 
+  <!-- ==================== MAIN CARDS SHOWCASE ==================== -->
   <main class="main-content">
     <div id="cards-grid" class="cards-grid"></div>
 
     <div id="empty-state" class="empty-state hidden">
-      <div class="empty-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-x preview-icon"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9.5 10.5 5 5"/><path d="m14.5 10.5-5 5"/></svg></div>
+      <div class="empty-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-x"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9.5 10.5 5 5"/><path d="m14.5 10.5-5 5"/></svg>
+      </div>
       <h2>No Results Found</h2>
       <p>We couldn't find anything matching your search criteria. Try a different keyword!</p>
     </div>
   </main>
 
+  <!-- ==================== MINI STATS SECTION (Retro Style) ==================== -->
+  <section class="mini-stats-section" aria-label="Vault Statistics">
+    <div class="stats-container">
+      <div class="stat-card">
+        <h3 id="stat-total">0</h3>
+        <p>TOTAL TITLES</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-anime">0</h3>
+        <p>ANIME RELEASES</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-series">0</h3>
+        <p>TV SERIES</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-movies">0</h3>
+        <p>BLOCKBUSTER MOVIES</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ADD TO VAULT SECTION ==================== -->
+  <section class="add-vault-section">
+    <div class="vault-container">
+      <div class="vault-header">
+        <span class="vault-badge">YOUR COLLECTION, YOUR RULES</span>
+        <h2 class="vault-title">Got a title we missed?</h2>
+        <p class="vault-subtitle">Add a movie, anime, or series to your personal vault. Custom entries stay in your browser session.</p>
+      </div>
+
+      <form id="add-vault-form" class="vault-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="vault-title-input">Title *</label>
+            <input type="text" id="vault-title-input" placeholder="e.g. Interstellar" required>
+          </div>
+
+          <div class="form-group">
+            <label for="vault-category-select">Category *</label>
+            <select id="vault-category-select" required>
+              <option value="Movies" selected>Movies</option>
+              <option value="Series">Series</option>
+              <option value="Anime">Anime</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="vault-year-input">Release Year *</label>
+            <input type="number" id="vault-year-input" placeholder="2024" min="1900" max="2099" required>
+          </div>
+
+          <div class="form-group">
+            <label for="vault-rating-input">Rating (0 - 10) *</label>
+            <input type="number" id="vault-rating-input" step="0.1" min="0" max="10" placeholder="8.5" required>
+          </div>
+
+          <div class="form-group">
+            <label for="vault-duration-input">Duration / Seasons *</label>
+            <input type="text" id="vault-duration-input" placeholder="e.g. 2h 49min or 3 Seasons" required>
+          </div>
+
+          <div class="form-group">
+            <label for="vault-image-input">Poster Image URL (TMDB / Direct Link)</label>
+            <input type="url" id="vault-image-input" placeholder="https://image.tmdb.org/t/p/w500/...">
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="vault-desc-input">Short Overview / Why it belongs here *</label>
+          <textarea id="vault-desc-input" rows="3" placeholder="A short description of this masterpiece..." required></textarea>
+        </div>
+
+        <button type="submit" class="vault-submit-btn">+ Add to the vault</button>
+        <p id="vault-msg" class="vault-status-msg hidden"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== DETAIL MODAL ==================== -->
   <div id="modal-container" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-card">
       <button id="modal-close-btn" class="modal-close" aria-label="Close modal">&times;</button>
