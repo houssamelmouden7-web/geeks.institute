@@ -1,22 +1,15 @@
-// ==========================================
-// 1. STATE MANAGEMENT
-// ==========================================
 const state = {
   currentCategory: "All",
   searchQuery: "",
   sortBy: "default"
 };
 
-// ==========================================
-// 2. DOM ELEMENT REFERENCES
-// ==========================================
 const cardsGrid = document.getElementById("cards-grid");
 const emptyState = document.getElementById("empty-state");
 const searchInput = document.getElementById("search-input");
 const filterButtons = document.querySelectorAll(".filter-btn");
 const sortSelect = document.getElementById("sort-select");
 
-// Modal Elements
 const modalContainer = document.getElementById("modal-container");
 const modalCloseBtn = document.getElementById("modal-close-btn");
 const modalImg = document.getElementById("modal-img");
@@ -27,14 +20,9 @@ const modalTitle = document.getElementById("modal-title");
 const modalDuration = document.getElementById("modal-duration");
 const modalStory = document.getElementById("modal-story");
 
-// ==========================================
-// 3. RENDERING FUNCTIONS
-// ==========================================
 function renderCards(items) {
-  // Clear previous cards
   cardsGrid.innerHTML = "";
 
-  // Show or hide empty state depending on array length
   if (items.length === 0) {
     emptyState.classList.remove("hidden");
     return;
@@ -42,7 +30,6 @@ function renderCards(items) {
     emptyState.classList.add("hidden");
   }
 
-  // Generate and append cards
   items.forEach(item => {
     const card = document.createElement("article");
     card.classList.add("card");
@@ -73,25 +60,19 @@ function renderCards(items) {
       </div>
     `;
 
-    // Click card to open detail modal
     card.addEventListener("click", () => openModal(item));
 
     cardsGrid.appendChild(card);
   });
 }
 
-// ==========================================
-// 4. FILTERING & SORTING LOGIC
-// ==========================================
 function applyFiltersAndSort() {
   let result = [...catalogItems];
 
-  // 1. Filter by Category
   if (state.currentCategory !== "All") {
     result = result.filter(item => item.category === state.currentCategory);
   }
 
-  // 2. Filter by Live Search (Title or Description)
   if (state.searchQuery.trim() !== "") {
     const query = state.searchQuery.toLowerCase();
     result = result.filter(item => 
@@ -100,7 +81,6 @@ function applyFiltersAndSort() {
     );
   }
 
-  // 3. Apply Sorting
   switch (state.sortBy) {
     case "rating-desc":
       result.sort((a, b) => b.ratingScore - a.ratingScore);
@@ -118,9 +98,6 @@ function applyFiltersAndSort() {
   renderCards(result);
 }
 
-// ==========================================
-// 5. MODAL CONTROLLERS
-// ==========================================
 function openModal(item) {
   modalImg.src = item.image;
   modalImg.alt = item.title;
@@ -143,9 +120,6 @@ function closeModal() {
   document.body.style.overflow = "auto";
 }
 
-// ==========================================
-// 6. EVENT LISTENERS
-// ==========================================
 searchInput.addEventListener("input", (e) => {
   state.searchQuery = e.target.value;
   applyFiltersAndSort();
@@ -180,9 +154,6 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// ==========================================
-// 7. INITIALIZE APPLICATION
-// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
   applyFiltersAndSort();
 });
