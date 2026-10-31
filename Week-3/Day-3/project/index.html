@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraja - Movies, Series & Anime Showcase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-brand">
+      <span class="brand-icon">🎬</span>
+      <h1 class="brand-title">F<span>raja</span></h1>
+    </div>
+
+    <div class="search-box">
+      <label for="search-input" class="visually-hidden">Search catalog</label>
+      <input 
+        type="search" 
+        id="search-input" 
+        placeholder="Search anime, series, or movies..."
+        autocomplete="off"
+      >
+      <span class="search-icon">🔍</span>
+    </div>
+  </header>
+
+  <section class="controls" aria-label="Filters and Sorting">
+    <div class="category-filters" role="group" aria-label="Filter by category">
+      <button class="filter-btn active" data-category="All">All</button>
+      <button class="filter-btn" data-category="Anime">Anime</button>
+      <button class="filter-btn" data-category="Series">Series</button>
+      <button class="filter-btn" data-category="Movies">Movies</button>
+    </div>
+
+    <div class="sort-control">
+      <label for="sort-select">Sort by:</label>
+      <select id="sort-select">
+        <option value="default">Default</option>
+        <option value="rating-desc">IMDb Rating (Highest)</option>
+        <option value="title-asc">Title (A-Z)</option>
+        <option value="title-desc">Title (Z-A)</option>
+      </select>
+    </div>
+  </section>
+
+  <main class="main-content">
+    <div id="cards-grid" class="cards-grid"></div>
+
+    <div id="empty-state" class="empty-state hidden">
+      <div class="empty-icon">📂❌</div>
+      <h2>No Results Found</h2>
+      <p>We couldn't find anything matching your search criteria. Try a different keyword!</p>
+    </div>
+  </main>
+
+  <div id="modal-container" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button id="modal-close-btn" class="modal-close" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-body">
+        <img id="modal-img" src="" alt="" class="modal-poster">
+        
+        <div class="modal-info">
+          <div class="modal-badges">
+            <span id="modal-category" class="badge badge-category"></span>
+            <span id="modal-rating" class="badge badge-rating"></span>
+            <span id="modal-year" class="badge badge-year"></span>
+          </div>
+
+          <h2 id="modal-title" class="modal-title"></h2>
+          <p id="modal-duration" class="modal-duration"></p>
+          
+          <div class="modal-divider"></div>
+          
+          <h3>Story Overview</h3>
+          <p id="modal-story" class="modal-story"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
