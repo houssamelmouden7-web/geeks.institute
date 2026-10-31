@@ -1,4 +1,3 @@
-/* ==================== ROOT VARIABLES ==================== */
 :root {
   --bg-body: #090a0f;
   --bg-surface: rgba(22, 24, 34, 0.7);
@@ -105,7 +104,6 @@ body {
   display: none !important;
 }
 
-/* ==================== HEADER ==================== */
 .app-header {
   position: sticky;
   top: 0;
@@ -256,7 +254,6 @@ body {
   transform: scale(1.1);
 }
 
-/* ==================== HERO SECTION (Slider + Up Next) ==================== */
 .hero-section {
   max-width: 1320px;
   margin: 20px auto 26px auto;
@@ -491,7 +488,6 @@ body {
   overflow: hidden;
 }
 
-/* ==================== SUB-CONTROLS ==================== */
 .sub-controls {
   max-width: 1320px;
   margin: 0 auto 20px auto;
@@ -542,7 +538,6 @@ body {
   cursor: pointer;
 }
 
-/* ==================== MAIN CARDS GRID ==================== */
 .main-content {
   max-width: 1320px;
   margin: 0 auto;
@@ -669,7 +664,6 @@ body {
   font-weight: 600;
 }
 
-/* Heart Favorite Button - currentColor for perfect Theme Adapting */
 .fav-btn {
   background: transparent;
   border: none;
@@ -678,7 +672,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-main); /* Byed f Dark, K7el f Light */
+  color: var(--text-main); 
   transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
@@ -687,7 +681,7 @@ body {
 }
 
 .fav-btn.is-favorite {
-  color: #ff2a44; /* Ahmer fash tkoun Favorite */
+  color: #ff2a44; 
 }
 
 .view-btn {
@@ -695,7 +689,6 @@ body {
   font-weight: 700;
 }
 
-/* ==================== MINI STATS SECTION (Retro Vault Style) ==================== */
 .mini-stats-section {
   max-width: 1320px;
   margin: 50px auto 10px auto;
@@ -729,7 +722,6 @@ body {
   color: var(--text-dim);
 }
 
-/* ==================== ADD TO VAULT SECTION (Clean Dropdown Fix) ==================== */
 .add-vault-section {
   max-width: 1320px;
   margin: 40px auto 30px auto;
@@ -823,7 +815,6 @@ body {
   transition: all var(--transition-fast);
 }
 
-/* FIX L-KHETT LI MA KAYBANCH F SELECT OPTIONS */
 .form-group select option {
   background-color: #1a1d29;
   color: #f8fafc;
@@ -871,7 +862,6 @@ body.light-theme .form-group select option {
   text-align: center;
 }
 
-/* ==================== EMPTY STATE & MODAL ==================== */
 .empty-state {
   text-align: center;
   padding: 80px 20px;
@@ -1004,7 +994,6 @@ body.light-theme .form-group select option {
   line-height: 1.7;
 }
 
-/* ==================== RESPONSIVE ==================== */
 @media (max-width: 1100px) {
   .app-header {
     flex-direction: column;

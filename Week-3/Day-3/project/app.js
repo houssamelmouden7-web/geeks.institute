@@ -1,22 +1,13 @@
-// ==========================================
-// 1. LUCIDE SVG ICONS DEFINITIONS
-// ==========================================
 const ICONS = {
   sun: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`,
   
   moon: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>`,
   
-  // Clean Outline Heart without any strike-through line
-  // Uses currentColor: automatically white in dark mode, black in light mode!
   heartOutline: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`,
   
-  // Red Filled Heart when favorited
   heartFilled: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#ff2a44" stroke="#ff2a44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart-filled"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
 };
 
-// ==========================================
-// 2. STATE MANAGEMENT & LOCAL STORAGE
-// ==========================================
 const customItems = JSON.parse(localStorage.getItem("fraja_custom_items")) || [];
 let allCatalog = [...catalogItems, ...customItems];
 
@@ -31,9 +22,6 @@ const state = {
   featuredList: []
 };
 
-// ==========================================
-// 3. DOM REFERENCES
-// ==========================================
 const brandHomeBtn = document.getElementById("brand-home-btn");
 const cardsGrid = document.getElementById("cards-grid");
 const emptyState = document.getElementById("empty-state");
@@ -45,13 +33,11 @@ const themeToggleBtn = document.getElementById("theme-toggle-btn");
 const btnHeartIcon = document.querySelector(".btn-heart-icon");
 const catalogCountLabel = document.getElementById("catalog-count-label");
 
-// Mini Stats
 const statTotal = document.getElementById("stat-total");
 const statAnime = document.getElementById("stat-anime");
 const statSeries = document.getElementById("stat-series");
 const statMovies = document.getElementById("stat-movies");
 
-// Slider & Up Next Elements
 const sliderImg = document.getElementById("slider-img");
 const sliderCategory = document.getElementById("slider-category");
 const sliderRating = document.getElementById("slider-rating");
@@ -63,11 +49,9 @@ const sliderNext = document.getElementById("slider-next");
 const sliderDotsContainer = document.getElementById("slider-dots");
 const upNextList = document.getElementById("up-next-list");
 
-// Add to Vault Form
 const vaultForm = document.getElementById("add-vault-form");
 const vaultMsg = document.getElementById("vault-msg");
 
-// Modal Elements
 const modalContainer = document.getElementById("modal-container");
 const modalCloseBtn = document.getElementById("modal-close-btn");
 const modalImg = document.getElementById("modal-img");
@@ -78,9 +62,6 @@ const modalTitle = document.getElementById("modal-title");
 const modalDuration = document.getElementById("modal-duration");
 const modalStory = document.getElementById("modal-story");
 
-// ==========================================
-// 4. THEME TOGGLE
-// ==========================================
 function applyTheme() {
   if (state.theme === "light") {
     document.body.classList.add("light-theme");
@@ -97,14 +78,9 @@ themeToggleBtn.addEventListener("click", () => {
   applyTheme();
 });
 
-// ==========================================
-// 5. BRAND LOGO -> CLICK TO HOME / RESET
-// ==========================================
 brandHomeBtn.addEventListener("click", (e) => {
-  // Scroll smooth to top / hero
   window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // Reset Category to All
   state.currentCategory = "All";
   state.searchQuery = "";
   searchInput.value = "";
@@ -114,9 +90,6 @@ brandHomeBtn.addEventListener("click", (e) => {
   applyFiltersAndSort();
 });
 
-// ==========================================
-// 6. MINI STATS UPDATER
-// ==========================================
 function updateMiniStats() {
   const total = allCatalog.length;
   const animeCount = allCatalog.filter(i => i.category === "Anime").length;
@@ -129,9 +102,6 @@ function updateMiniStats() {
   if (statMovies) statMovies.textContent = moviesCount;
 }
 
-// ==========================================
-// 7. HERO SLIDER & RANDOM UP NEXT
-// ==========================================
 function initHeroSection() {
   const shuffled = [...allCatalog].sort(() => 0.5 - Math.random());
   state.featuredList = shuffled.slice(0, 5);
@@ -226,9 +196,6 @@ sliderPrev.addEventListener("click", () => {
   resetSliderTimer();
 });
 
-// ==========================================
-// 8. FAVORITES SYSTEM
-// ==========================================
 function toggleFavorite(id, e) {
   e.stopPropagation();
   const index = state.favorites.indexOf(id);
@@ -249,9 +216,6 @@ function updateFavCounter() {
   }
 }
 
-// ==========================================
-// 9. CARDS RENDERING
-// ==========================================
 function renderCards(items) {
   cardsGrid.innerHTML = "";
 
@@ -336,9 +300,6 @@ function applyFiltersAndSort() {
   renderCards(result);
 }
 
-// ==========================================
-// 10. ADD TO VAULT LOGIC
-// ==========================================
 vaultForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -385,9 +346,6 @@ vaultForm.addEventListener("submit", (e) => {
   applyFiltersAndSort();
 });
 
-// ==========================================
-// 11. MODAL & LISTENERS
-// ==========================================
 function openModal(item) {
   modalImg.src = item.image;
   modalImg.alt = item.title;
@@ -437,9 +395,6 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// ==========================================
-// 12. INITIALIZATION
-// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
   if (btnHeartIcon) btnHeartIcon.innerHTML = ICONS.heartOutline;
   applyTheme();
