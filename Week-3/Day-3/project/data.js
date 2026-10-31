@@ -271,7 +271,7 @@ const catalogItems = [
     id: 20,
     title: "City of God",
     category: "Movies",
-    image: "https://upload.wikimedia.org/wikipedia/en/1/10/CidadedeDeus.jpg",
+    image: "https://www.themoviedb.org/t/p/w600_and_h900_face/ywbOvbl24H5pH4TzhS6HbfKSr2H.jpg",
     metric: "⭐ 8.6/10",
     ratingScore: 8.6,
     shortDescription: "Two young men in Rio's dangerous slums choose opposite roads: one an aspiring photographer, the other a kingpin.",

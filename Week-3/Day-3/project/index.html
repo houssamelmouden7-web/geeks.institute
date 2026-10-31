@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fraja - Movies, Series & Anime Showcase</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="app-header">
     <div class="header-brand">
-      <span class="brand-icon">🎬</span>
+      <span class="brand-icon"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clapperboard preview-icon"><path d="m12.296 3.464 3.02 3.956"/><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3z"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="m6.18 5.276 3.1 3.899"/></svg></span>
       <h1 class="brand-title">F<span>raja</span></h1>
     </div>
 
@@ -22,7 +27,7 @@
         placeholder="Search anime, series, or movies..."
         autocomplete="off"
       >
-      <span class="search-icon">🔍</span>
+      <span class="search-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search preview-icon"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></span>
     </div>
   </header>
 
@@ -32,9 +37,12 @@
       <button class="filter-btn" data-category="Anime">Anime</button>
       <button class="filter-btn" data-category="Series">Series</button>
       <button class="filter-btn" data-category="Movies">Movies</button>
+      <button class="filter-btn fav-filter-btn" data-category="Favorites"> Favorites (<span id="fav-counter">0</span>)</button>
     </div>
 
     <div class="sort-control">
+      <button id="theme-toggle-btn" class="theme-btn" title="Toggle Theme" aria-label="Toggle Dark and Light Mode">🌙</button>
+
       <label for="sort-select">Sort by:</label>
       <select id="sort-select">
         <option value="default">Default</option>
@@ -49,7 +57,7 @@
     <div id="cards-grid" class="cards-grid"></div>
 
     <div id="empty-state" class="empty-state hidden">
-      <div class="empty-icon">📂❌</div>
+      <div class="empty-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-x preview-icon"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/><path d="m9.5 10.5 5 5"/><path d="m14.5 10.5-5 5"/></svg></div>
       <h2>No Results Found</h2>
       <p>We couldn't find anything matching your search criteria. Try a different keyword!</p>
     </div>
