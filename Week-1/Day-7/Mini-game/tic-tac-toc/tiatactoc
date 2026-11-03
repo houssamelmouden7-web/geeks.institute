@@ -1,0 +1,83 @@
+def display_board(board):
+    print("TIC TAC TOE")
+    print("*****************")
+    print(f"*  {board[0][0]}  |  {board[0][1]}  |  {board[0][2]}  *")
+    print("* ---|---|--- *")
+    print(f"*  {board[1][0]}  |  {board[1][1]}  |  {board[1][2]}  *")
+    print("* ---|---|--- *")
+    print(f"*  {board[2][0]}  |  {board[2][1]}  |  {board[2][2]}  *")
+    print("*****************")
+
+def player_input(player, board):
+    print(f"Player {player}'s turn...")
+    while True:
+        try:
+            row = int(input("Enter row: "))
+            col = int(input("Enter column: "))
+
+            if row in [1, 2, 3] and col in [1, 2, 3]:
+                if board[row - 1][col - 1] == " ":
+                    return row - 1, col - 1
+                else:
+                    print("Had l-blasa 3amra! Khtar blasa khra.\n")
+            else:
+                print("Kteb raqm bin 1 w 3!\n")
+        except ValueError:
+            print("3afak kteb raqm s7i7 (1, 2 wla 3)!\n")
+
+def check_win(board, player):
+    for row in board:
+        if row[0] == row[1] == row[2] == player:
+            return True
+
+    for col in range(3):
+        if board[0][col] == board[1][col] == board[2][col] == player:
+            return True
+
+    if board[0][0] == board[1][1] == board[2][2] == player:
+        return True
+    if board[0][2] == board[1][1] == board[2][0] == player:
+        return True
+
+    return False
+
+def check_tie(board):
+    for row in board:
+        if " " in row:
+            return False
+    return True
+
+def play():
+    print("Welcome to TIC TAC TOE!\n")
+    
+    board = [
+        [" ", " ", " "],
+        [" ", " ", " "],
+        [" ", " ", " "]
+    ]
+
+    current_player = "X"
+
+    while True:
+        display_board(board)
+        
+        row, col = player_input(current_player, board)
+        board[row][col] = current_player
+
+        if check_win(board, current_player):
+            display_board(board)
+            print(f"🎉 Mabrouk! Player {current_player} rbe7!")
+            break
+
+        if check_tie(board):
+            display_board(board)
+            print("Salat l-le3ba b ta3adoul (Tie)!")
+            break
+
+        if current_player == "X":
+            current_player = "O"
+        else:
+            current_player = "X"
+
+if __name__ == "__main__":
+    play()
