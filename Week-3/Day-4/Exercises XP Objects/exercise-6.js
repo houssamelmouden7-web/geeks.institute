@@ -7,9 +7,9 @@ const object3 = object2;
 const object4 = { number: 5 };
 
 object1.number = 4;
-console.log(object2.number); // 4
-console.log(object3.number); // 4
-console.log(object4.number); // 5
+console.log(object2.number); 
+console.log(object3.number);
+console.log(object4.number); 
 
 class Animal {
   constructor(name, type, color) {
