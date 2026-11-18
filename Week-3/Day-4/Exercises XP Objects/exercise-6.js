@@ -1,6 +1,6 @@
-console.log([2] === [2]); 
-console.log({} === {});   
-
+//console.log([2] === [2]); 
+//console.log({} === {});   
+//ra dertha cmt m3a sed3atni 
 const object1 = { number: 5 }; 
 const object2 = object1; 
 const object3 = object2; 
