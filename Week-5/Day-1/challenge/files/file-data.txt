@@ -1,0 +1,1 @@
+Salam! Had l-ma3loumat t-qraw mn fichier file-data.txt b Node.js.
