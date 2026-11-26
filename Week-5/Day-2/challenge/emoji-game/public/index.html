@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emoji Guessing Game</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .container {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+    .emoji-box {
+      font-size: 80px;
+      margin: 20px 0;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+      margin-bottom: 20px;
+    }
+    .option-label {
+      background: #334155;
+      padding: 12px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .option-label:hover {
+      background: #475569;
+    }
+    button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    .feedback {
+      margin-top: 15px;
+      font-weight: bold;
+      min-height: 24px;
+    }
+    .score-board {
+      display: flex;
+      justify-content: space-between;
+      background: #0f172a;
+      padding: 10px 16px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .leaderboard {
+      margin-top: 25px;
+      text-align: left;
+      border-top: 1px solid #334155;
+      padding-top: 15px;
+    }
+    .save-box {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 Emoji Guessing Game</h1>
+
+    <div class="score-board">
+      <span>Score: <strong id="score">0</strong></span>
+      <span>Streak: <strong id="streak">0</strong> 🔥</span>
+    </div>
+
+    <div class="emoji-box" id="emoji-display">❓</div>
+
+    <form id="guess-form">
+      <div class="options" id="options-container"></div>
+      <button type="submit">Submit Guess</button>
+    </form>
+
+    <div class="feedback" id="feedback"></div>
+
+    <div class="leaderboard">
+      <h3>🏆 Top Players Leaderboard</h3>
+      <ol id="leaderboard-list"></ol>
+      <div class="save-box">
+        <input type="text" id="player-name" placeholder="Smiytk bach t-sajjel score..." />
+        <button type="button" id="save-score-btn" style="width: auto;">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
